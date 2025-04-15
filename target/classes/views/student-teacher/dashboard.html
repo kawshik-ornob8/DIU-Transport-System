@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student/Teacher Panel - Varsity Transport System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="student-teacher.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-green-600">
+                    <i class="fas fa-bus mr-2"></i>DIU Transport System
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="desktop-menu flex items-center space-x-6">
+                    <a href="../index.html" class="hover:text-green-600 transition-colors">Home</a>
+                    <a href="student-teacher.html" class="text-green-600 font-semibold border-b-2 border-green-600">My Panel</a>
+                    <a href="../login.html" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        Logout <i class="fas fa-sign-out-alt ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="mobile-menu text-2xl md:hidden">
+                    ☰
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Items -->
+            <div id="mobileMenu" class="mobile-menu hidden md:hidden mt-4 space-y-2 pb-2">
+                <a href="../index.html" class="block py-2 px-4 hover:bg-gray-100 rounded">Home</a>
+                <a href="student-teacher.html" class="block py-2 px-4 bg-green-50 text-green-600 rounded font-medium">My Panel</a>
+                <a href="../login.html" class="block py-2 px-4 bg-green-600 text-white rounded font-medium">
+                    Logout <i class="fas fa-sign-out-alt ml-1"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Welcome Banner -->
+        <div class="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl p-6 mb-8 shadow-md">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold mb-2">Welcome to Your Transport Panel</h1>
+                    <p class="opacity-90">Manage your bus schedules, routes, and tickets in one place</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                        <i class="fas fa-user-graduate text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Schedule Card -->
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-green-100 rounded-lg mr-3">
+                        <i class="fas fa-clock text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Bus Schedule</h3>
+                </div>
+                <div id="bus-schedule" class="space-y-3">
+                    <div class="animate-pulse flex space-y-3 flex-col">
+                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-200 rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Routes Card -->
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-blue-100 rounded-lg mr-3">
+                        <i class="fas fa-route text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Bus Routes</h3>
+                </div>
+                <div id="bus-routes" class="space-y-3">
+                    <div class="animate-pulse flex space-y-3 flex-col">
+                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-200 rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ticket Purchase Card -->
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-purple-100 rounded-lg mr-3">
+                        <i class="fas fa-ticket-alt text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Buy Ticket</h3>
+                </div>
+                <form id="buy-ticket-form" class="space-y-4">
+                    <select id="route-select" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-green-500">
+                        <option value="" disabled selected>Select Route</option>
+                    </select>
+                    <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+                        <i class="fas fa-shopping-cart mr-2"></i> Purchase Ticket
+                    </button>
+                </form>
+            </div>
+
+            <!-- Prices Card -->
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-yellow-100 rounded-lg mr-3">
+                        <i class="fas fa-tag text-yellow-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Ticket Prices</h3>
+                </div>
+                <div id="ticket-prices" class="space-y-3">
+                    <div class="animate-pulse flex space-y-3 flex-col">
+                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-200 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Bookings -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="p-6 border-b">
+                <h3 class="text-xl font-semibold flex items-center">
+                    <i class="fas fa-history mr-2 text-green-600"></i> Recent Bookings
+                </h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bus</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Route</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookings-list" class="divide-y">
+                        <!-- Loading state -->
+                        <tr>
+                            <td colspan="6" class="px-6 py-4">
+                                <div class="animate-pulse flex space-x-4">
+                                    <div class="flex-1 space-y-4 py-1">
+                                        <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                        <div class="space-y-2">
+                                            <div class="h-4 bg-gray-200 rounded"></div>
+                                            <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t mt-8">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-600 mb-4 md:mb-0">
+                    © 2025 Varsity Transport System. All Rights Reserved.
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-500 hover:text-green-600">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-green-600">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-green-600">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="student-teacher.js"></script>
+</body>
+</html>

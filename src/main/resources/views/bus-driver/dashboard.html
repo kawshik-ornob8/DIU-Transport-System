@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Panel - Varsity Transport System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">
+                <i class="fas fa-bus mr-2"></i>DIU Transport System
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <a href="../index.html" class="hover:text-blue-600">Home</a>
+                <a href="driver.html" class="text-blue-600 font-semibold border-b-2 border-blue-600">Driver Panel</a>
+                <a href="../login.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    Logout <i class="fas fa-sign-out-alt ml-1"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Welcome Banner -->
+        <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-6 mb-8 shadow-md">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold mb-2">Welcome, Driver John</h1>
+                    <p class="opacity-90">Vehicle: Volvo B8R (AC-19-4567)</p>
+                </div>
+                <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                    <i class="fas fa-id-card text-3xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Today's Trips -->
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-blue-100 rounded-lg mr-3">
+                        <i class="fas fa-calendar-day text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Today's Trips</h3>
+                </div>
+                <div id="today-trips" class="space-y-3"></div>
+            </div>
+
+            <!-- Upcoming Trips -->
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-purple-100 rounded-lg mr-3">
+                        <i class="fas fa-calendar-alt text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Upcoming Trips</h3>
+                </div>
+                <div id="upcoming-trips" class="space-y-3"></div>
+            </div>
+
+            <!-- Completed Trips -->
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-green-100 rounded-lg mr-3">
+                        <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">Completed Trips</h3>
+                </div>
+                <div id="completed-trips" class="space-y-3"></div>
+            </div>
+
+            <!-- My Route -->
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-orange-100 rounded-lg mr-3">
+                        <i class="fas fa-route text-orange-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold">My Route</h3>
+                </div>
+                <div id="driver-route" class="space-y-2"></div>
+            </div>
+        </div>
+
+        <!-- Route Map Section -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-map-marked-alt mr-2 text-blue-600"></i> Route Map
+            </h3>
+            <div class="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
+                <p class="text-gray-500">Map integration placeholder</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t mt-8">
+        <div class="container mx-auto px-4 py-4 text-center text-gray-600">
+            © 2025 DIU Transport System. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Enhanced driver data
+        const driverData = {
+            username: 'driver1',
+            vehicle: 'Volvo B8R (AC-19-4567)',
+            todayTrips: [
+                { 
+                    time: '08:00 - 09:00 AM', 
+                    route: 'Campus A to Campus B',
+                    passengers: 42,
+                    status: 'In Progress',
+                    delay: 'On Time'
+                },
+                { 
+                    time: '12:00 - 01:00 PM', 
+                    route: 'Campus B to Campus A',
+                    passengers: 38,
+                    status: 'Scheduled',
+                    delay: ''
+                }
+            ],
+            upcomingTrips: [
+                { 
+                    date: '09 Apr 2025',
+                    time: '09:00 - 10:00 AM', 
+                    route: 'Campus A to Campus C',
+                    passengers: 0,
+                    status: 'Upcoming'
+                },
+                { 
+                    date: '10 Apr 2025',
+                    time: '02:00 - 03:00 PM', 
+                    route: 'Campus C to Campus A',
+                    passengers: 0,
+                    status: 'Upcoming'
+                }
+            ],
+            completedTrips: [
+                { 
+                    date: '07 Apr 2025',
+                    time: '10:00 - 11:00 AM', 
+                    route: 'Campus A to Campus B',
+                    passengers: 45,
+                    rating: '4.8/5'
+                }
+            ],
+            route: {
+                name: 'Route 1 - Express',
+                start: 'Campus A (Main Gate)',
+                end: 'Campus B (North Entrance)',
+                distance: '15.2 km',
+                duration: '45 mins',
+                stops: 8
+            }
+        };
+
+        // DOM Population Functions
+        function populateTodayTrips() {
+            const container = document.getElementById('today-trips');
+            container.innerHTML = driverData.todayTrips.map(trip => `
+                <div class="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="font-medium">${trip.time}</div>
+                        <span class="text-xs px-2 py-1 rounded-full ${trip.status === 'In Progress' ? 
+                            'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}">
+                            ${trip.status}
+                        </span>
+                    </div>
+                    <div class="text-sm text-gray-600">${trip.route}</div>
+                    <div class="flex justify-between mt-2 text-xs">
+                        <span class="text-gray-500">
+                            <i class="fas fa-users mr-1"></i>${trip.passengers}
+                        </span>
+                        ${trip.delay ? `
+                        <span class="text-green-600">
+                            <i class="fas fa-check-circle"></i> ${trip.delay}
+                        </span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function populateUpcomingTrips() {
+            const container = document.getElementById('upcoming-trips');
+            container.innerHTML = driverData.upcomingTrips.map(trip => `
+                <div class="p-3 bg-gray-50 rounded-lg hover:bg-purple-50 transition-colors">
+                    <div class="text-xs text-gray-500 mb-1">${trip.date}</div>
+                    <div class="font-medium">${trip.time}</div>
+                    <div class="text-sm text-gray-600">${trip.route}</div>
+                    <div class="mt-2 text-xs text-gray-500">
+                        <i class="fas fa-users mr-1"></i>${trip.passengers} passengers expected
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function populateCompletedTrips() {
+            const container = document.getElementById('completed-trips');
+            container.innerHTML = driverData.completedTrips.map(trip => `
+                <div class="p-3 bg-gray-50 rounded-lg hover:bg-green-50 transition-colors">
+                    <div class="text-xs text-gray-500 mb-1">${trip.date}</div>
+                    <div class="font-medium">${trip.time}</div>
+                    <div class="text-sm text-gray-600">${trip.route}</div>
+                    <div class="flex justify-between mt-2 text-xs">
+                        <span class="text-gray-500">
+                            <i class="fas fa-users mr-1"></i>${trip.passengers}
+                        </span>
+                        <span class="text-yellow-600">
+                            <i class="fas fa-star"></i> ${trip.rating}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function populateRoute() {
+            const container = document.getElementById('driver-route');
+            const route = driverData.route;
+            container.innerHTML = `
+                <div class="p-3 bg-gray-50 rounded-lg">
+                    <div class="font-medium">${route.name}</div>
+                    <div class="text-sm text-gray-600 mt-2">
+                        <div class="flex items-center mb-1">
+                            <i class="fas fa-play-circle mr-2 text-green-600"></i>
+                            ${route.start}
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-flag-checkered mr-2 text-red-600"></i>
+                            ${route.end}
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-3 text-xs text-gray-500">
+                        <span><i class="fas fa-road mr-1"></i>${route.distance}</span>
+                        <span><i class="fas fa-clock mr-1"></i>${route.duration}</span>
+                        <span><i class="fas fa-map-marker-alt mr-1"></i>${route.stops} stops</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize Application
+        document.addEventListener('DOMContentLoaded', () => {
+            populateTodayTrips();
+            populateUpcomingTrips();
+            populateCompletedTrips();
+            populateRoute();
+
+            // Add click handlers for trips
+            document.querySelectorAll('#today-trips > div').forEach(trip => {
+                trip.addEventListener('click', () => {
+                    Swal.fire({
+                        title: 'Trip Details',
+                        html: `<div class="text-left">
+                            <p class="font-medium">${trip.querySelector('.font-medium').textContent}</p>
+                            <p class="text-sm text-gray-600">${trip.querySelector('.text-sm').textContent}</p>
+                            <div class="mt-2 text-xs">
+                                ${trip.querySelector('.text-xs').innerHTML}
+                            </div>
+                        </div>`,
+                        confirmButtonColor: '#3b82f6'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

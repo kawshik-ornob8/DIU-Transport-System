@@ -1,0 +1,38 @@
+/* Driver Panel */
+.driver-panel {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+.driver-panel h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.panel-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.panel-card {
+    background-color: white;
+    padding: 2rem;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.panel-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.panel-card p {
+    margin: 0.5rem 0;
+}
